@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "opcua_client"
+version = "0.1.0"
+description = ""
+authors = ["Jack Kuo <chunchiehdev@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+opcua = "^0.98.13"
+cryptography = "^42.0.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

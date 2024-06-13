@@ -1,0 +1,30 @@
+{
+  "Folder": "opc-plc-node-customized",
+  "NodeList": [
+      {
+          "NodeId": "PLATFORM.AUTO.TEST.WRITE.DATA",
+          "AccessLevel": "CurrentReadOrWrite"
+      },
+      {
+          "NodeId": "PLATFORM.AUTO.TEST.WRITE.DATA1",
+          "AccessLevel": "CurrentReadOrWrite"
+      },
+      {
+          "NodeId": "PLATFORM.AUTO.TEST.WRITE.DATA2",
+          "AccessLevel": "CurrentReadOrWrite"
+      },
+      {
+          "NodeId": "PLATFORM.AUTO.TEST.WRITE.DATA3",
+          "AccessLevel": "CurrentReadOrWrite"
+      },
+      {
+          "NodeId": "PLATFORM.AUTO.TEST.WRITE.DATA4",
+          "AccessLevel": "CurrentReadOrWrite"
+      },
+      {
+          "NodeId": "PLATFORM.AUTO.TEST.WITH.DEVICE.SEGEMNT",
+          "AccessLevel": "CurrentReadOrWrite",
+          "Value": 123
+      }
+  ]
+}

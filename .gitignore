@@ -1,0 +1,21 @@
+# Certificates
+cert.der
+cert.pem
+
+# OPC UA certificates directory
+opcua_certs/
+
+# Poetry lock file
+poetry.lock
+
+
+# SSL configuration file
+ssl.conf
+
+# General patterns (optional, to catch any other generated or temporary files)
+*.log
+*.tmp
+*.bak
+*.swp
+__pycache__/
+*.pyc

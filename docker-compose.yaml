@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  opcplc:
+    image: mcr.microsoft.com/iotedge/opc-plc:latest
+    container_name: opcplc
+    ports:
+      - "50000:50000"
+      - "8080:8080"
+    volumes:
+      - /tmp/opcua_certs/certs:/app/pki
+    command: --pn=50000 --sph --sn=5 --sr=10 --st=uint --fn=5 --fr=1 --ft=uint --gn=5 --ll=trace --ph=opcplc --cdn=opcplc,localhost --ap=app/pki/
+    networks:
+      - opc_network
+
+networks:
+  opc_network:
+    driver: bridge

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opc-deployment
+  namespace: dev
+  labels:
+    app: opc-simulator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opc-simulator
+  template:
+    metadata:
+      labels:
+        app: opc-simulator
+    spec:
+      containers:
+        - name: opc-simulator-server-container
+          image: duxregistry.azurecr.io/opc-plc:latest
+          args:
+            - "--ph=0.0.0.0"
+            - "--pn=80"
+            - "--autoaccept=true"
+            - "--sph"
+            - "--sn=2000"
+            - "--sr=1"
+            - "--st=uint"
+            - "--stu=99999"
+            - "--ftr=true"
+            - "--fn=100"
+            - "--fr=1"
+            - "--ft=double"
+            - "--gn=5"
+            - "--unsecuretransport"
+            - "--trustowncert"
+            - "--disablecertauth"
+            - "--trustowncert"
+            - "--du=devTestUser"
+            - "--dc=devTestPassword"
+            - "--nodesfile=../app/customized/node.json"
+          env:
+            - name: PYTHONUNBUFFERED
+              value: "1"
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: acr-secret
