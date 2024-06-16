@@ -2,11 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: opc-deployment
-  namespace: dev
+  namespace: jack-dev
   labels:
     app: opc-simulator
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: opc-simulator
@@ -17,32 +17,22 @@ spec:
     spec:
       containers:
         - name: opc-simulator-server-container
-          image: duxregistry.azurecr.io/opc-plc:latest
+          image: iot.azurecr.io/opc-plc:opc-plc
           args:
-            - "--ph=0.0.0.0"
             - "--pn=80"
-            - "--autoaccept=true"
-            - "--sph"
-            - "--sn=2000"
-            - "--sr=1"
+            - "--ll=debug"
+            - "--sn=5"
+            - "--sr=10"
             - "--st=uint"
-            - "--stu=99999"
-            - "--ftr=true"
-            - "--fn=100"
-            - "--fr=1"
-            - "--ft=double"
+            - "--fn=5"
+            - "--ft=uint"
             - "--gn=5"
-            - "--unsecuretransport"
-            - "--trustowncert"
-            - "--disablecertauth"
-            - "--trustowncert"
-            - "--du=devTestUser"
-            - "--dc=devTestPassword"
-            - "--nodesfile=../app/customized/node.json"
-          env:
-            - name: PYTHONUNBUFFERED
-              value: "1"
+            - "--ses"
+            - "--ap=app/pki/"
           ports:
-            - containerPort: 80
+            - name: tcp-port
+              containerPort: 80
+            - name: http-port
+              containerPort: 8080
       imagePullSecrets:
-        - name: acr-secret
+        - name: res

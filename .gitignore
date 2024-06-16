@@ -1,16 +1,10 @@
-# Certificates
-cert.der
-cert.pem
-
 # OPC UA certificates directory
 opcua_certs/
-
-# Poetry lock file
-poetry.lock
-
+client/
 
 # SSL configuration file
 ssl.conf
+
 
 # General patterns (optional, to catch any other generated or temporary files)
 *.log
@@ -19,3 +13,5 @@ ssl.conf
 *.swp
 __pycache__/
 *.pyc
+.venv/
+

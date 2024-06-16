@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.12"
 opcua = "^0.98.13"
 cryptography = "^42.0.8"
+asyncua = {git = "https://github.com/FreeOpcUa/opcua-asyncio.git"}
 
 
 [build-system]

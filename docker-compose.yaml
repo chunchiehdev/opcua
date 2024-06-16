@@ -2,17 +2,37 @@ version: "3.8"
 
 services:
   opcplc:
-    image: mcr.microsoft.com/iotedge/opc-plc:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: opcplc
     ports:
       - "50000:50000"
       - "8080:8080"
     volumes:
-      - /tmp/opcua_certs/certs:/app/pki
-    command: --pn=50000 --sph --sn=5 --sr=10 --st=uint --fn=5 --fr=1 --ft=uint --gn=5 --ll=trace --ph=opcplc --cdn=opcplc,localhost --ap=app/pki/
+      - ./opcua_certs/certs:/app/pki
+      - ./res/customized_node:/app/customized
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
     networks:
       - opc_network
+
+  client:
+    image: alpine:latest
+    container_name: client
+    networks:
+      - opc_network
+    volumes:
+      - ./client:/app/client_certs
+    entrypoint: ["sleep", "infinity"]
 
 networks:
   opc_network:
     driver: bridge
+    name: opc_network
