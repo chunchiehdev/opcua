@@ -1,6 +1,6 @@
 # OPC UA certificates directory
 opcua_certs/
-client/
+client_certs/
 
 # SSL configuration file
 ssl.conf

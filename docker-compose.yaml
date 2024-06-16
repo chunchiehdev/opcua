@@ -29,7 +29,7 @@ services:
     networks:
       - opc_network
     volumes:
-      - ./client:/app/client_certs
+      - ./client_certs:/app
     entrypoint: ["sleep", "infinity"]
 
 networks:
