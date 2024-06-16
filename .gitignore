@@ -14,4 +14,4 @@ ssl.conf
 __pycache__/
 *.pyc
 .venv/
-
+.vscode/
