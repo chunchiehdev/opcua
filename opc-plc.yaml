@@ -1,15 +1,15 @@
 trigger:
   - none
-# Starter pipeline
+
 parameters:
-  - name: dockerfileName
-    displayName: Dockerfile Name
+  - name: dockerfilePath
+    displayName: Dockerfile Path
     type: string
-    default: 'opc-plc.Dockerfile'
+    default: ./Dockerfile
   - name: dockerTag
     displayName: Target Container Tag Name
     type: string
-    default: 'opc-plc-simulator'
+    default: "opc-plc-simulator"
 
 stages:
   - stage: development
@@ -22,7 +22,7 @@ stages:
           - task: Docker@2
             displayName: Docker build and push
             inputs:
-              containerRegistry: 'IOT-Platform-Registry'
-              repository: 'opc-plc'
-              Dockerfile: dockerfile/${{ parameters.dockerfileName }}
+              containerRegistry: "IOT-Platform-Registry"
+              repository: "opc-plc-dev"
+              Dockerfile: ${{ parameters.dockerfilePath }}
               tags: ${{ parameters.dockerTag }}

@@ -27,7 +27,6 @@ spec:
             - "--fn=5"
             - "--ft=uint"
             - "--gn=5"
-            - "--ses"
             - "--ap=app/pki/"
           ports:
             - name: tcp-port

@@ -12,14 +12,7 @@ services:
     volumes:
       - ./opcua_certs/certs:/app/pki
       - ./res/customized_node:/app/customized
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Production
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: "0.50"
-          memory: 512M
     networks:
       - opc_network
 

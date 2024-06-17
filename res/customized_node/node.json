@@ -1,30 +1,62 @@
 {
-  "Folder": "opc-plc-node-customized",
-  "NodeList": [
-      {
-          "NodeId": "PLATFORM.AUTO.TEST.WRITE.DATA",
-          "AccessLevel": "CurrentReadOrWrite"
-      },
-      {
-          "NodeId": "PLATFORM.AUTO.TEST.WRITE.DATA1",
-          "AccessLevel": "CurrentReadOrWrite"
-      },
-      {
-          "NodeId": "PLATFORM.AUTO.TEST.WRITE.DATA2",
-          "AccessLevel": "CurrentReadOrWrite"
-      },
-      {
-          "NodeId": "PLATFORM.AUTO.TEST.WRITE.DATA3",
-          "AccessLevel": "CurrentReadOrWrite"
-      },
-      {
-          "NodeId": "PLATFORM.AUTO.TEST.WRITE.DATA4",
-          "AccessLevel": "CurrentReadOrWrite"
-      },
-      {
-          "NodeId": "PLATFORM.AUTO.TEST.WITH.DEVICE.SEGEMNT",
+  "Folder": "MyTelemetry",
+  "FolderList": [
+    {
+      "Folder": "Sensors",
+      "NodeList": [
+        {
+          "NodeId": "TemperatureSensor1",
+          "Name": "Temperature Sensor 1",
+          "Description": "Sensor measuring temperature in Celsius",
+          "DataType": "Double",
+          "ValueRank": -1,
+          "AccessLevel": "CurrentRead",
+          "Value": 23.5
+        },
+        {
+          "NodeId": "PressureSensor1",
+          "Name": "Pressure Sensor 1",
+          "Description": "Sensor measuring pressure in Pascals",
+          "DataType": "Float",
+          "ValueRank": -1,
+          "AccessLevel": "CurrentRead",
+          "Value": 101325
+        }
+      ]
+    },
+    {
+      "Folder": "Controllers",
+      "NodeList": [
+        {
+          "NodeId": "MotorController1",
+          "Name": "Motor Controller 1",
+          "Description": "Controller for motor speed",
+          "DataType": "Int32",
+          "ValueRank": -1,
           "AccessLevel": "CurrentReadOrWrite",
-          "Value": 123
-      }
+          "Value": 1200
+        }
+      ]
+    }
+  ],
+  "NodeList": [
+    {
+      "NodeId": "SystemStatus",
+      "Name": "System Status",
+      "Description": "Overall system status indicator",
+      "DataType": "Boolean",
+      "ValueRank": -1,
+      "AccessLevel": "CurrentRead",
+      "Value": true
+    },
+    {
+      "NodeId": "OperationalMode",
+      "Name": "Operational Mode",
+      "Description": "Current operational mode of the system",
+      "DataType": "String",
+      "ValueRank": -1,
+      "AccessLevel": "CurrentReadOrWrite",
+      "Value": "Automatic"
+    }
   ]
 }

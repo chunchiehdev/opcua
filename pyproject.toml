@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "opcua_client"
+name = "opcua_dev"
 version = "0.1.0"
 description = ""
 authors = ["Jack Kuo <chunchiehdev@gmail.com>"]

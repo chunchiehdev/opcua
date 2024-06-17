@@ -18,13 +18,13 @@ async def browse_node(node, node_list):
 
 async def main():
 
-    url = "opc.tcp://opcplc:50000"
+    url = "opc.tcp://localhost:4840"
     client = Client(url=url)
     
     await client.set_security(
         SecurityPolicyBasic256Sha256,
-        "./opcua_certs/certs/cert.der",
-        "./opcua_certs/private/cert.pem"
+        "./client_certs/certs/cert.der",
+        "./client_certs/private/cert.pem"
     )
     client.application_uri = "urn:OpcPlc:opcplc"
     client.secure_channel_timeout = 10000
@@ -36,12 +36,12 @@ async def main():
         root = client.nodes.root
         print("Root node is: ", root)
 
-        node_list = []
-        await browse_node(root, node_list)
+        # node_list = []
+        # await browse_node(root, node_list)
 
 
-        with open("node_list.txt", "w") as file:
-            json.dump(node_list, file, indent=4)
+        # with open("node_list.txt", "w") as file:
+        #     json.dump(node_list, file, indent=4)
 
 if __name__ == "__main__":
     asyncio.run(main())
