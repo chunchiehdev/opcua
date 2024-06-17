@@ -12,12 +12,13 @@ async def main():
     url = "opc.tcp://localhost:50000"
     client = Client(url=url)
     
+    client.application_uri = "urn:OpcPlc:opcplc"
+    
     await client.set_security(
         SecurityPolicyBasic256Sha256,
         "./client_certs/certs/cert.der",
         "./client_certs/private/cert.pem"
     )
-    client.application_uri = "urn:OpcPlc:opcplc"
     client.secure_channel_timeout = 10000
     client.session_timeout = 10000
 
